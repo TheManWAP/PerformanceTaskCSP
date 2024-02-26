@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const NPC = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     JumpCount += 1
     if (Player1.image.equals(assets.image`IdleDay1`)) {
@@ -51,6 +54,20 @@ function TimeOfDay () {
         DayNightModifier = 1.5
     }
 }
+function TutorialBasics () {
+    if (Player1.overlapsWith(Tutorial)) {
+        game.setDialogFrame(assets.image`SpeechBG`)
+        game.showLongText("It is a pleasure to meet your acquaintance. My name is Anna.", DialogLayout.Full)
+        game.showLongText("We do not have much time. The world id being torn apart by a dark energy.", DialogLayout.Full)
+        game.showLongText("I have granted you the ability to transform, but only during nighttime.", DialogLayout.Full)
+        game.showLongText("Using the (B) Button, you can fast-forward between day and night, each with its own perks/debuffs.", DialogLayout.Full)
+        game.showLongText("During the daytime, you are much faster, but lose an extra air jump and have weaker attacks.", DialogLayout.Full)
+        game.showLongText("During the daytime, you are much faster, but lose an extra air jump and have weaker attacks.", DialogLayout.Full)
+        game.showLongText("During the nighttime, some of that speed is traded for an extra air jump and stronger attacks.", DialogLayout.Full)
+        game.showLongText("There is an obstacle course to help you learn your newfound powers.", DialogLayout.Full)
+        game.showLongText("The fate of the world rests in your hands. Good luck, hero.", DialogLayout.Full)
+    }
+}
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
@@ -68,6 +85,9 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     if (Player1.image.equals(assets.image`IdleDay1`) || Player1.image.equals(assets.image`IdleNight1`)) {
         speed = walkSpeed
     }
+})
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    TutorialBasics()
 })
 function setRunningVariables () {
     speed = 80
@@ -90,6 +110,8 @@ let speed = 0
 let DayNightModifier = 0
 let JumpCount = 0
 let Player1: Sprite = null
+let Tutorial: Sprite = null
+Tutorial = sprites.create(assets.image`TutorialLady`, SpriteKind.NPC)
 setRunningVariables()
 Player1 = sprites.create(assets.image`IdleDay1`, SpriteKind.Player)
 Player1.ay = 350
@@ -99,6 +121,7 @@ tiles.setCurrentTilemap(tilemap`Start Level - Day`)
 tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
 JumpCount = 0
 DayNightModifier = 1.5
+tiles.placeOnTile(Tutorial, tiles.getTileLocation(5, 105))
 forever(function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         if (speed >= 120) {

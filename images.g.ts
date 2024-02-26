@@ -581,6 +581,43 @@ bb77bb77b77bb77bbb77b77bbbb77b7b77b7777bbb77bb77b77bb77bbb77b77bbbb77b7b77b7777b
 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
 `;
+            case "image15":
+            case "TutorialLady":return img`
+. . . . . f f e e f f . . . . . 
+. . . . f 2 e 4 4 e 2 f . . . . 
+. . . f e e 2 4 4 2 e e f . . . 
+. . f 6 9 e e e e e e 9 6 f . . 
+. . f 9 9 9 9 9 9 9 9 9 9 f . . 
+. f 9 9 c b 9 c c 9 b c 9 9 f . 
+. f 9 9 f f c c c c f f 9 9 f . 
+. f 6 6 f b 6 c c 6 b f 6 6 f . 
+. f 6 6 c d 6 e e 6 d c 6 6 f . 
+f f 6 6 f e e e e e e f 6 6 f f 
+f 6 6 f f f c c c c f f f 6 6 f 
+. f c c f b d d d d b f c c f . 
+. . c e c d d d d d d c e c . . 
+. . c f b d b d b d b b f c . . 
+. . . f f 1 d 1 d 1 d f f . . . 
+. . . . . f f b b f f . . . . . 
+`;
+            case "image16":
+            case "SpeechBG":return img`
+d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+d d d d d d d d d d d d d d d 
+d d d d d d d d d d d d d d d 
+`;
         }
         return null;
     })

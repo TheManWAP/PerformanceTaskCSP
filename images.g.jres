@@ -69,6 +69,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "ForegroundBG2"
     },
+    "image15": {
+        "data": "hwQQABAAAAAAAAAA8A8AAAAA8P//9gAAAPCfaWbGzAAAb5lpZs/+D/Ceyf/8/7wPL+65v+2/3fHv4pls5ty9/U7kyczu3N2xTuTJzO7cvb3v4pls5tzd8S/uub/tv7398J7J//z/vA8Ab5lpZs/+DwDwn2lmxswAAADw///2AAAAAAAA8A8AAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "TutorialLady"
+    },
+    "image16": {
+        "data": "hwQPAA8AAADdk7u7u5vTDd2Tu7u7m9MN3ZO7u7ub0w3dk7u7u5vTDd2Tu7u7m9MN3ZO7u7ub0w3dk7u7u5vTDd2Tu7u7m9MN3ZO7u7ub0w3dk7u7u5vTDd2Tu7u7m9MN3ZO7u7ub0w3dk7u7u5vTDd2Tu7u7m9MN3ZO7u7ub0w0=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "SpeechBG"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
