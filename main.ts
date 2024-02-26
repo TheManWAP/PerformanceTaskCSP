@@ -62,7 +62,6 @@ function TutorialBasics () {
         game.showLongText("I have granted you the ability to transform, but only during nighttime.", DialogLayout.Full)
         game.showLongText("Using the (B) Button, you can fast-forward between day and night, each with its own perks/debuffs.", DialogLayout.Full)
         game.showLongText("During the daytime, you are much faster, but lose an extra air jump and have weaker attacks.", DialogLayout.Full)
-        game.showLongText("During the daytime, you are much faster, but lose an extra air jump and have weaker attacks.", DialogLayout.Full)
         game.showLongText("During the nighttime, some of that speed is traded for an extra air jump and stronger attacks.", DialogLayout.Full)
         game.showLongText("There is an obstacle course to help you learn your newfound powers.", DialogLayout.Full)
         game.showLongText("The fate of the world rests in your hands. Good luck, hero.", DialogLayout.Full)
