@@ -128,7 +128,7 @@ DayNightModifier = 1.5
 tiles.placeOnTile(Tutorial, tiles.getTileLocation(5, 105))
 forever(function () {
     if (Player1.tileKindAt(TileDirection.Center, sprites.builtin.brick) || Player1.tileKindAt(TileDirection.Center, sprites.dungeon.floorDark0)) {
-        game.splash("Try me bud.")
+        game.splash("Forgot to mention: if you're inside of a tile, you start at the beginning again. Good luck! :)")
         tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
     }
     if (Player1.image.equals(assets.image`IdleDay1`)) {
