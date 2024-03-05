@@ -36,10 +36,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    TimeOfDay()
-})
-function TimeOfDay () {
+function TimeOfDay__Start_Level () {
     if (scene.backgroundImage().equals(assets.image`ForegroundBG`)) {
         scene.setBackgroundImage(assets.image`BackgroundBG`)
         tiles.setCurrentTilemap(tilemap`Start Level - Night`)
@@ -54,6 +51,11 @@ function TimeOfDay () {
         DayNightModifier = 1.5
     }
 }
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
+        TimeOfDay__Start_Level()
+    }
+})
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
@@ -61,6 +63,12 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleNight1`)) {
         speed += AccelerationValueNight
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`GoalTile`, function (sprite, location) {
+    scene.setBackgroundImage(assets.image`Level1FGBG`)
+    tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
+    tiles.placeOnTile(Player1, tiles.getTileLocation(1, 102))
+    sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     if (Player1.image.equals(assets.image`IdleDay1`) || Player1.image.equals(assets.image`IdleNight1`)) {
