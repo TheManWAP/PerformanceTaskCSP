@@ -36,26 +36,41 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-function TimeOfDay__Start_Level () {
-    if (scene.backgroundImage().equals(assets.image`ForegroundBG`)) {
-        scene.setBackgroundImage(assets.image`BackgroundBG`)
-        tiles.setCurrentTilemap(tilemap`Start Level - Night`)
-        Player1.setImage(assets.image`IdleNight1`)
-        Player1.startEffect(effects.halo, 1000)
-        DayNightModifier = 0.85
-    } else {
-        scene.setBackgroundImage(assets.image`ForegroundBG`)
-        tiles.setCurrentTilemap(tilemap`Start Level - Day`)
-        Player1.setImage(assets.image`IdleDay1`)
-        Player1.startEffect(effects.ashes, 1000)
-        DayNightModifier = 1.5
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    TimeOfDay()
+})
+function TimeOfDay () {
+    if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
+        if (scene.backgroundImage().equals(assets.image`ForegroundBG`)) {
+            scene.setBackgroundImage(assets.image`BackgroundBG`)
+            tiles.setCurrentTilemap(tilemap`Start Level - Night`)
+            Player1.setImage(assets.image`IdleNight1`)
+            Player1.startEffect(effects.halo, 1000)
+            DayNightModifier = 0.85
+        } else {
+            scene.setBackgroundImage(assets.image`ForegroundBG`)
+            tiles.setCurrentTilemap(tilemap`Start Level - Day`)
+            Player1.setImage(assets.image`IdleDay1`)
+            Player1.startEffect(effects.ashes, 1000)
+            DayNightModifier = 1.5
+        }
+    }
+    if (scene.backgroundImage().equals(assets.image`Level1FGBG`) || scene.backgroundImage().equals(assets.image`Level1BGBG`)) {
+        if (scene.backgroundImage().equals(assets.image`Level1FGBG`)) {
+            scene.setBackgroundImage(assets.image`Level1BGBG`)
+            tiles.setCurrentTilemap(tilemap`Level 1 - Night`)
+            Player1.setImage(assets.image`IdleNight1`)
+            Player1.startEffect(effects.halo, 1000)
+            DayNightModifier = 0.85
+        } else {
+            scene.setBackgroundImage(assets.image`Level1FGBG`)
+            tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
+            Player1.setImage(assets.image`IdleDay1`)
+            Player1.startEffect(effects.ashes, 1000)
+            DayNightModifier = 1.5
+        }
     }
 }
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
-        TimeOfDay__Start_Level()
-    }
-})
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
