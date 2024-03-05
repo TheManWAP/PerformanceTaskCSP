@@ -80,10 +80,13 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`GoalTile`, function (sprite, location) {
-    scene.setBackgroundImage(assets.image`Level1FGBG`)
-    tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
-    tiles.placeOnTile(Player1, tiles.getTileLocation(1, 102))
-    sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
+    if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
+        game.splash("Forgot to mention this too;", "If you're overlapped with an NPC, you can press (DOWN) to talk to them.")
+        scene.setBackgroundImage(assets.image`Level1FGBG`)
+        tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
+        tiles.placeOnTile(Player1, tiles.getTileLocation(1, 102))
+        sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
+    }
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     if (Player1.image.equals(assets.image`IdleDay1`) || Player1.image.equals(assets.image`IdleNight1`)) {
@@ -151,7 +154,7 @@ DayNightModifier = 1.5
 tiles.placeOnTile(Tutorial, tiles.getTileLocation(5, 105))
 forever(function () {
     if (Player1.tileKindAt(TileDirection.Center, sprites.builtin.brick) || Player1.tileKindAt(TileDirection.Center, sprites.dungeon.floorDark0)) {
-        game.splash("Try me bud.")
+        game.splash("You're gonna teleport back if you try that again.")
         tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
     }
     if (Player1.image.equals(assets.image`IdleDay1`)) {
