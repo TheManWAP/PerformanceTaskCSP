@@ -99,7 +99,9 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`PortalFG`, function (sprite, location) {
-    tiles.placeOnTile(Player1, tiles.getTileLocation(59, 55))
+    if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
+        tiles.placeOnTile(Player1, tiles.getTileLocation(59, 55))
+    }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     TalkToNPC()
