@@ -40,6 +40,12 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     TimeOfDay()
 })
 function TimeOfDay () {
+    if (Player1.image.equals(assets.image`IdleDay1`)) {
+        statusbar.setColor(4, 15, 5)
+    }
+    if (Player1.image.equals(assets.image`IdleNight1`)) {
+        statusbar.setColor(9, 1, 10)
+    }
     if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
         if (scene.backgroundImage().equals(assets.image`ForegroundBG`)) {
             scene.setBackgroundImage(assets.image`BackgroundBG`)
@@ -71,6 +77,9 @@ function TimeOfDay () {
         }
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    statusbar.value += -10
+})
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
@@ -97,6 +106,10 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     if (Player1.image.equals(assets.image`IdleDay1`) || Player1.image.equals(assets.image`IdleNight1`)) {
         speed = walkSpeed
     }
+})
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.dissolve)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`PortalFG`, function (sprite, location) {
     if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
@@ -139,8 +152,16 @@ let AccelerationValueDay = 0
 let speed = 0
 let DayNightModifier = 0
 let JumpCount = 0
-let Player1: Sprite = null
 let Tutorial: Sprite = null
+let Player1: Sprite = null
+let statusbar: StatusBarSprite = null
+statusbar = statusbars.create(30, 10, StatusBarKind.Health)
+statusbar.positionDirection(CollisionDirection.Top)
+statusbar.value = 100
+statusbar.attachToSprite(Player1)
+statusbar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+statusbar.setColor(9, 2, 5)
+statusbar.setLabel("HP")
 game.splash("You seem to appear in a random plane. You are unsure of where you are, but there seems to be a mysterious lady with you.")
 game.splash("Press (DOWN) to talk to the mysterious lady behind you...")
 Tutorial = sprites.create(assets.image`TutorialLady`, SpriteKind.NPC)
