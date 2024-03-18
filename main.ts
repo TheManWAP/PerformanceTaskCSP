@@ -1,15 +1,7 @@
 namespace SpriteKind {
     export const NPC = SpriteKind.create()
+    export const Hitbox = SpriteKind.create()
 }
-scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    if (!(Player1.isHittingTile(CollisionDirection.Top))) {
-        JumpCount = 0
-    }
-    if (Player1.isHittingTile(CollisionDirection.Left) || Player1.isHittingTile(CollisionDirection.Right)) {
-        Player1.vy = 20
-        JumpCount = 1
-    }
-})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     JumpCount += 1
     if (Player1.image.equals(assets.image`IdleDay1`)) {
@@ -35,6 +27,18 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
             pause(200)
         }
     }
+})
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    if (!(Player1.isHittingTile(CollisionDirection.Top))) {
+        JumpCount = 0
+    }
+    if (Player1.isHittingTile(CollisionDirection.Left) || Player1.isHittingTile(CollisionDirection.Right)) {
+        Player1.vy = 20
+        JumpCount = 1
+    }
+})
+sprites.onOverlap(SpriteKind.Hitbox, SpriteKind.Enemy, function (sprite, otherSprite) {
+	
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     TimeOfDay()
@@ -71,6 +75,9 @@ function TimeOfDay () {
         }
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Attack = sprites.createProjectileFromSprite(assets.image`Attack`, Player1, 0, 0)
+})
 controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
@@ -78,7 +85,6 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`GoalTile`, function (sprite, location) {
     if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
-        game.splash("Forgot to mention this too;", "If you're overlapped with an NPC, you can press (DOWN) to talk to them.")
         scene.setBackgroundImage(assets.image`Level1FGBG`)
         tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
         tiles.placeOnTile(Player1, tiles.getTileLocation(1, 102))
@@ -133,6 +139,10 @@ let DayNightModifier = 0
 let JumpCount = 0
 let Player1: Sprite = null
 let Tutorial: Sprite = null
+let Attack: Sprite = null
+Attack = sprites.create(assets.image`Attack`, SpriteKind.Hitbox)
+let statusbar = statusbars.create(30, 3, StatusBarKind.Health)
+statusbar.value = 200
 game.splash("You seem to appear in a random forest in the middle of nowhere. You are unsure of where you are, but there seems to be a mysterious lady with you.")
 game.splash("Press (DOWN) to talk to the mysterious lady behind you...")
 Tutorial = sprites.create(assets.image`TutorialLady`, SpriteKind.NPC)
@@ -146,7 +156,17 @@ tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
 JumpCount = 0
 DayNightModifier = 1.5
 tiles.placeOnTile(Tutorial, tiles.getTileLocation(5, 105))
+info.setScore(0)
 forever(function () {
+    if (statusbar.value < 200) {
+        pause(400)
+        statusbar.value += 6
+        pause(100)
+    }
+    statusbar.setColor(7, 2, 4)
+    statusbar.setLabel("HP", 15)
+    statusbar.positionDirection(CollisionDirection.Top)
+    statusbar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
     if (Player1.tileKindAt(TileDirection.Center, sprites.builtin.brick) || Player1.tileKindAt(TileDirection.Center, sprites.dungeon.floorDark0)) {
         game.splash("You're gonna teleport back if you try that again.")
         tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))

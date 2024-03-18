@@ -476,25 +476,6 @@ b b b b b b b b b b b b b b b
 d d d d d d d d d d d d d d d 
 d d d d d d d d d d d d d d d 
 `;
-            case "image14":
-            case "Enemy1":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`;
             case "image5":
             case "NightRightWalk1":return img`
 . . . . . . . . . . . . . 
@@ -778,6 +759,44 @@ ccbbccbbcbbccbbcccbbcbbccccbbcbcbbcbbbbcccbbccbbcbbccbbcccbbcbbccccbbcbcbbcbbbbc
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
+`;
+            case "image20":
+            case "ENEMY1":return img`
+. . f f f . . . . . . . . f f f 
+. f f c c . . . . . . f c b b c 
+f f c c . . . . . . f c b b c . 
+f c f c c c c c . . f b c c c . 
+f f f 3 c c 3 c . f c b b c c . 
+f f c 3 c c 3 c c f b c b b c . 
+f f b b b c b b c f b c c b c . 
+. c 1 b b b 1 b c b b c c c . . 
+. c d b b b d b b c c c c . . . 
+c b b b b b b b b b c c . . . . 
+c b c b b b c b b b b f . . . . 
+f b 1 f f f 1 b b b b f c . . . 
+f b 1 b b b 1 b b b b f c c . . 
+. f b b b b b b b b c f . . . . 
+. . f b b b b b b c f . . . . . 
+. . . f f f f f f f . . . . . . 
+`;
+            case "image21":
+            case "Attack":return img`
+b b c c 1 b b b b b b b b 5 c d 
+b b c b 1 1 b b 8 8 b b 5 5 c d 
+b c c b b 1 b 8 d 8 8 8 5 d c d 
+c c b b b 1 8 c 9 9 9 8 5 d c c 
+b b b b 1 1 8 c 9 b 9 8 5 d d d 
+b b b 1 1 8 8 c 9 b c 9 5 5 d d 
+1 1 1 c 8 8 c c 9 c c 9 b 5 5 5 
+d d d c 8 d d 9 9 c b 9 b c c c 
+5 5 d c 8 d d 9 b c 9 8 8 c b b 
+5 b 5 c d 8 d 9 9 9 b 8 b 1 1 1 
+b b b 5 5 8 8 b b b 8 1 1 d d d 
+c b b b 5 5 8 8 8 8 8 d c c c c 
+b c c c b b 5 c c 1 d c c d d d 
+b b b c b b 5 5 1 d d c d d d d 
+b b b c b b b 5 1 d d c d d d d 
+b b b c b b b 5 d d d c d d d d 
 `;
         }
         return null;
