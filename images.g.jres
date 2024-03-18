@@ -99,6 +99,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Attack"
     },
+    "image14": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAPAPAAAAAPD///yw7gAA/8/PzO/kAPD/rP/u/P8A8M/6v0FsZv//xfoMQF5V/1/F+uxEXlYPX8X67EReVg//xfoMQF5W//DP+r9BbGb/8P+s/+78/wAA/8zPzO/kAADw///8sO4AAAAA8A8AAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Shopkeeper"
+    },
     "anim1": {
         "namespace": "myAnimations",
         "id": "anim1",

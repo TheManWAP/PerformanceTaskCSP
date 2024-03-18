@@ -38,7 +38,13 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     }
 })
 sprites.onOverlap(SpriteKind.Hitbox, SpriteKind.Enemy, function (sprite, otherSprite) {
-	
+    sprites.destroyAllSpritesOfKind(SpriteKind.Hitbox)
+    if (Player1.image.equals(assets.image`IdleDay1`)) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy, effects.ashes, 1000)
+    }
+    if (Player1.image.equals(assets.image`IdleNight1`)) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy, effects.halo, 1000)
+    }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     TimeOfDay()
@@ -88,7 +94,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`GoalTile`, function (sprite, 
         scene.setBackgroundImage(assets.image`Level1FGBG`)
         tiles.setCurrentTilemap(tilemap`Level 1 - Day`)
         tiles.placeOnTile(Player1, tiles.getTileLocation(1, 102))
-        sprites.destroyAllSpritesOfKind(SpriteKind.NPC)
+        sprites.destroy(Tutorial)
+        info.changeScoreBy(1000)
+        tiles.placeOnTile(Shopkeeper, tiles.getTileLocation(3, 102))
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
@@ -121,6 +129,10 @@ function TalkToNPC () {
         game.showLongText("There is an obstacle course to help you learn your newfound powers.", DialogLayout.Full)
         game.showLongText("The fate of the world rests in your hands. Good luck, hero.", DialogLayout.Full)
     }
+    if (Player1.overlapsWith(Shopkeeper)) {
+        game.setDialogFrame(assets.image`SpeechBG`)
+        game.showLongText("Howdy! I'm the shopkeeper! I'm not sure why, but I'll be magically following you around to offer upgrades! :)", DialogLayout.Full)
+    }
 }
 function setRunningVariables () {
     speed = 80
@@ -140,6 +152,8 @@ let JumpCount = 0
 let Player1: Sprite = null
 let Tutorial: Sprite = null
 let Attack: Sprite = null
+let Shopkeeper: Sprite = null
+Shopkeeper = sprites.create(assets.image`Shopkeeper`, SpriteKind.NPC)
 Attack = sprites.create(assets.image`Attack`, SpriteKind.Hitbox)
 let statusbar = statusbars.create(30, 3, StatusBarKind.Health)
 statusbar.value = 200

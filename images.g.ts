@@ -798,6 +798,25 @@ b b b c b b 5 5 1 d d c d d d d
 b b b c b b b 5 1 d d c d d d d 
 b b b c b b b 5 d d d c d d d d 
 `;
+            case "image14":
+            case "Shopkeeper":return img`
+. . . . . . f f f f . . . . . . 
+. . . . f f f 5 5 f f f . . . . 
+. . . f f f 5 5 5 5 f f f . . . 
+. . f f f c c c c c c f f f . . 
+. . f f c a a a a a a c c f . . 
+. . f c a f f f f f f a c f . . 
+. . f f f f c c c c f f f f . . 
+. f f c f b . e e . b f c f f . 
+. f c c e 1 . 4 4 . 1 e c c f . 
+. . f c e 4 4 4 4 4 4 e c f . . 
+. . . f c c e e e e c c f . . . 
+. . b e f 6 5 5 5 5 6 f e b . . 
+. . e 4 f 6 5 6 6 6 6 f 4 e . . 
+. . e e f 6 5 5 5 5 6 f e e . . 
+. . . . . f f f f f f . . . . . 
+. . . . . f f . . f f . . . . . 
+`;
         }
         return null;
     })
