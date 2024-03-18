@@ -75,9 +75,6 @@ controller.right.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
     }
-    if (Player1.image.equals(assets.image`IdleNight1`)) {
-        speed += AccelerationValueNight
-    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`GoalTile`, function (sprite, location) {
     if (scene.backgroundImage().equals(assets.image`ForegroundBG`) || scene.backgroundImage().equals(assets.image`BackgroundBG`)) {
@@ -123,25 +120,20 @@ function setRunningVariables () {
     speed = 80
     AccelerationValueDay = 10
     walkSpeed = 80
-    AccelerationValueNight = 5
 }
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         speed += AccelerationValueDay
     }
-    if (Player1.image.equals(assets.image`IdleNight1`)) {
-        speed += AccelerationValueNight
-    }
 })
 let walkSpeed = 0
-let AccelerationValueNight = 0
 let AccelerationValueDay = 0
 let speed = 0
 let DayNightModifier = 0
 let JumpCount = 0
 let Player1: Sprite = null
 let Tutorial: Sprite = null
-game.splash("You seem to appear in a random plane. You are unsure of where you are, but there seems to be a mysterious lady with you.")
+game.splash("You seem to appear in a random forest in the middle of nowhere. You are unsure of where you are, but there seems to be a mysterious lady with you.")
 game.splash("Press (DOWN) to talk to the mysterious lady behind you...")
 Tutorial = sprites.create(assets.image`TutorialLady`, SpriteKind.NPC)
 setRunningVariables()
