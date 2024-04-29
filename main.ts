@@ -172,6 +172,10 @@ DayNightModifier = 1.5
 tiles.placeOnTile(Tutorial, tiles.getTileLocation(5, 105))
 info.setScore(0)
 forever(function () {
+    if (Player1.tileKindAt(TileDirection.Center, sprites.builtin.brick) || Player1.tileKindAt(TileDirection.Center, sprites.dungeon.floorDark0)) {
+        game.splash("You're gonna teleport back if you try that again.")
+        tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
+    }
     if (statusbar.value < 200) {
         pause(400)
         statusbar.value += 6
@@ -181,10 +185,6 @@ forever(function () {
     statusbar.setLabel("HP", 15)
     statusbar.positionDirection(CollisionDirection.Top)
     statusbar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    if (Player1.tileKindAt(TileDirection.Center, sprites.builtin.brick) || Player1.tileKindAt(TileDirection.Center, sprites.dungeon.floorDark0)) {
-        game.splash("You're gonna teleport back if you try that again.")
-        tiles.placeOnTile(Player1, tiles.getTileLocation(8, 103))
-    }
     if (Player1.image.equals(assets.image`IdleDay1`)) {
         if (speed >= 120) {
             speed = 120
